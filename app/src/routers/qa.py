@@ -9,7 +9,7 @@ router = Router()
 
 @router.message()
 async def answer(message: aiogram_types.Message):
-    information = retrieve(message.text)
+    information = await retrieve(message.text)
     
     response = await generate(message.text, information)
     

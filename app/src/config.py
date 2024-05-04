@@ -17,8 +17,9 @@ class Settings(BaseSettings):
     pinecone_host: str
     pinecone_namespace: str
     gigachat_credentials: str
-    remote_url: str
-
+    embeddings_url: str
+    llm_url: str
+    
     class Config:
         extra = "ignore"
 

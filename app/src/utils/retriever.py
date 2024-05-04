@@ -1,16 +1,19 @@
-from src.utils.embedder import embed
 from src.database.repositories import InformationRepository
+from src.utils.embedder import embed
+
+import logging
 
 
-def retrieve(question: str) -> str:
-    embedded_question = embed(question)
+async def retrieve(question: str) -> str:
+    embedded_question = await embed(question)
 
-    results = InformationRepository().query(embedded_question)
+    result = await InformationRepository().query(embedded_question)
 
     seen = set()
     information = []
 
-    for d in results:
+    for d in result["matches"]:
+        logging.info(d["id"])
         if d["metadata"]["parent_text"] not in seen:
             information.append(
                 {
@@ -20,4 +23,4 @@ def retrieve(question: str) -> str:
             )
             seen.add(d["metadata"]["parent_text"])
 
-    return "\n\n".join(information)
+    return str(information)
