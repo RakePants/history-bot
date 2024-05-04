@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "Hello from seq2seq"}
+    return {"message": "Hello from embedder model!"}
 
 
 @app.post("/embed", status_code=status.HTTP_200_OK)
