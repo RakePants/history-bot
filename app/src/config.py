@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     pinecone_api_key: str
     pinecone_host: str
     pinecone_namespace: str
+    gigachat_credentials: str
+    remote_url: str
 
     class Config:
         extra = "ignore"

@@ -1,19 +1,11 @@
 services:
   history_bot:
     build: app
-    deploy:
-      resources:
-          reservations:
-              devices:
-                  - driver: nvidia
-                    device_ids: ['1']
-                    capabilities: [ gpu ]
     volumes:
       - ./app:/usr/src/app
-      #- /home/ontollm/.cache/huggingface/hub:/home/history_bot_user/.cache/huggingface/hub
     env_file:
       - ./app/.env
     ports:
       - 8657:8000
     command: >
-      sh -c "python -m app.src.main"
+      sh -c "python -m src.main"
