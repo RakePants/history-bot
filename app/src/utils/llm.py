@@ -23,9 +23,8 @@ async def generate(question: str, information: str) -> str:
             content=USER_MESSAGE.format(question=question, information=information)
         ),
     ]
-    logging.info(messages)
 
     res = await custom_llm.agenerate(messages=[messages])
     logging.info(res)
-
+    
     return res.generations[0][0].text
