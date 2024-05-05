@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, List
 
 from fastapi import Body, FastAPI, status
 from fastapi.responses import JSONResponse
@@ -14,6 +14,6 @@ def root():
 
 
 @app.post("/embed", status_code=status.HTTP_200_OK)
-def embed_route(text: Annotated[str, Body()]) -> JSONResponse:
+def embed_route(text: Annotated[str, Body(embed=True)]) -> JSONResponse:
     result = embed(text).tolist()
     return JSONResponse(content={"vector": result})
