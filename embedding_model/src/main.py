@@ -1,4 +1,4 @@
-from typing import Annotated, List
+from typing import Annotated
 
 from fastapi import Body, FastAPI, status
 from fastapi.responses import JSONResponse
