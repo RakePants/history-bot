@@ -16,7 +16,7 @@ class InformationRepository(AbstractRepository):
         self.index = index
         self.namespace = settings.pinecone_namespace
 
-    async def query(self, vector, top_k: int = 4) -> list:
+    async def query(self, vector, top_k: int = 3) -> list:
         response = await asyncio.to_thread(
             self.index.query,
             namespace=self.namespace,
